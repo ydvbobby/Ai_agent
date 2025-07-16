@@ -8,3 +8,4 @@ faiss-cpu
 serpapi
 requests
 sentence-transformers
+pypdf
