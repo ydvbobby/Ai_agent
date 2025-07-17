@@ -9,3 +9,4 @@ serpapi
 requests
 sentence-transformers
 pypdf
+google-search-results

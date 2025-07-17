@@ -10,7 +10,7 @@ from langchain.vectorstores import FAISS
 import os
 from langchain import hub
 import requests
-
+from serpapi import GoogleSearch
 from langchain_core.runnables import RunnableParallel, RunnablePassthrough, RunnableLambda
 from langchain_core.output_parsers import StrOutputParser
 from langchain.prompts import PromptTemplate
