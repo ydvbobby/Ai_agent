@@ -3,17 +3,20 @@ from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint, HuggingF
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.tools import tool
 from langchain.agents import create_react_agent, AgentExecutor
-from dotenv import load_dotenv
-from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
-import os
-from langchain import hub
-import requests
-from serpapi import GoogleSearch
 from langchain_core.runnables import RunnableParallel, RunnablePassthrough, RunnableLambda
 from langchain_core.output_parsers import StrOutputParser
 from langchain.prompts import PromptTemplate
+from langchain import hub
+from langchain_google_genai import ChatGoogleGenerativeAI
+from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled
+
+from dotenv import load_dotenv
+import os
+import requests
+from serpapi import GoogleSearch
+
 
 
 
@@ -25,7 +28,8 @@ llm = HuggingFaceEndpoint(
    task="text-generation",
 )
 
-model = ChatHuggingFace(llm=llm)
+model1 = ChatHuggingFace(llm=llm)
+model2 = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
 
 
 # Sidebar static menu
@@ -108,7 +112,7 @@ if page == "PDF Reader":
                      
                      )
                   
-                  model = model
+                  model = model1
                   parser = StrOutputParser()
                   
                   parallel_chain = RunnableParallel({
@@ -181,7 +185,7 @@ elif page == "Simple Chatbot":
 
     # Configure Gemini
     prompt = hub.pull('hwchase17/react')
-    model = model
+    model = model2
 
    
     if 'chat_history' not in st.session_state:
@@ -292,7 +296,7 @@ elif page == "YouTube Summarizer":
 
          #define retreiver and model
          retriever = vector_store.as_retriever(search_type="similarity", search_kwargs={"k":3})
-         model= model
+         model= model1
          
          
          st.subheader("Data Fethch Successfull")
