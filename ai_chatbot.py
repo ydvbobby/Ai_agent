@@ -185,7 +185,7 @@ elif page == "Simple Chatbot":
 
     # Configure Gemini
     prompt = hub.pull('hwchase17/react')
-    model = model2
+    model = model1
 
    
     if 'chat_history' not in st.session_state:
