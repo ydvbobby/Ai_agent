@@ -23,7 +23,7 @@ from serpapi import GoogleSearch
 
 #define model
 llm = HuggingFaceEndpoint(
-   repo_id="tngtech/DeepSeek-TNG-R1T2-Chimera",
+   repo_id="meta-llama/Llama-3.1-8B-Instruct",
    task="text-generation",
 )
 
