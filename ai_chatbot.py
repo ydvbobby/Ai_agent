@@ -28,8 +28,8 @@ llm = HuggingFaceEndpoint(
    task="text-generation",
 )
 
-model1 = ChatHuggingFace(llm=llm)
-model2 = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
+model = ChatHuggingFace(llm=llm)
+
 
 
 # Sidebar static menu
@@ -185,7 +185,7 @@ elif page == "Simple Chatbot":
 
     # Configure Gemini
     prompt = hub.pull('hwchase17/react')
-    model = st.radio("select model" [model1,model2])
+    model = model
     
 
    
