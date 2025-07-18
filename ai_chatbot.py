@@ -9,7 +9,6 @@ from langchain_core.runnables import RunnableParallel, RunnablePassthrough, Runn
 from langchain_core.output_parsers import StrOutputParser
 from langchain.prompts import PromptTemplate
 from langchain import hub
-from langchain_google_genai import ChatGoogleGenerativeAI
 from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled
 
 from dotenv import load_dotenv
@@ -112,7 +111,7 @@ if page == "PDF Reader":
                      
                      )
                   
-                  model = model1
+                  model = model
                   parser = StrOutputParser()
                   
                   parallel_chain = RunnableParallel({
@@ -297,7 +296,7 @@ elif page == "YouTube Summarizer":
 
          #define retreiver and model
          retriever = vector_store.as_retriever(search_type="similarity", search_kwargs={"k":3})
-         model= model1
+         model= model
          
          
          st.subheader("Data Fethch Successfull")
