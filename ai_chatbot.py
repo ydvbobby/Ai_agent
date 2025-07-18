@@ -24,7 +24,7 @@ from serpapi import GoogleSearch
 
 #define model
 llm = HuggingFaceEndpoint(
-   repo_id="mistralai/Mixtral-8x7B-Instruct-v0.1",
+   repo_id="tngtech/DeepSeek-TNG-R1T2-Chimera",
    task="text-generation",
 )
 
@@ -185,7 +185,8 @@ elif page == "Simple Chatbot":
 
     # Configure Gemini
     prompt = hub.pull('hwchase17/react')
-    model = model1
+    model = st.radio("select model" [model1,model2])
+    
 
    
     if 'chat_history' not in st.session_state:
