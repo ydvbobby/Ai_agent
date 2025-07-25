@@ -231,6 +231,7 @@ elif page == "Simple Chatbot":
        ai_response = run_chain(user_input)
        st.write('You: ', user_input)
        st.write('AI: ', ai_response)
+       st.session_state.my_input = ""
    
     st.subheader('📜 Chat History')
     for msg in st.session_state.chat_history.messages:
